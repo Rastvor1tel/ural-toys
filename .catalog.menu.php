@@ -1,0 +1,53 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+$aMenuLinks = Array(
+	Array(
+		"Каталог",
+		"catalog/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новинки",
+		"new/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Хиты продаж",
+		"hitsales/",
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Товары по акции",
+		"akciy/",
+		Array(),
+		Array(),
+		""
+	),
+    Array(
+        "Бренд",
+        "brands/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Фикс-цена",
+        "fix-price/",
+        Array(),
+        Array(),
+        ""
+    ),
+    Array(
+        "Прайс-лист",
+        "price-list/",
+        Array(),
+        Array(),
+        ""
+    ),
+);
+?>

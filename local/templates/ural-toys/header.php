@@ -3,6 +3,8 @@
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Page\Asset;
 
+Loc::loadMessages(__FILE__);
+
 Asset::getInstance()->addString('<meta http-equiv="X-UA-Compatible" content="IE=Edge">');
 Asset::getInstance()->addString('<meta name="viewport" content="width=device-width, initial-scale=1">');
 Asset::getInstance()->addString('<meta name="theme-color" content="#f26522">');
@@ -18,8 +20,6 @@ Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/style.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/swiper.css');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/swiper.min.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/bundle.js');
-
-Loc::loadMessages(__FILE__);
 ?>
 <!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>">
@@ -92,21 +92,24 @@ Loc::loadMessages(__FILE__);
                  Александра
                </span>
                 </div>
-
-                <ul class="header__top-list">
-                    <li class="header__top-item">
-                        <a href="/about.html" class="header__top-link">О компании</a>
-                    </li>
-                    <li class="header__top-item">
-                        <a href="/work.html" class="header__top-link">Условия работы</a>
-                    </li>
-                    <li class="header__top-item">
-                        <a href="/delivery.html" class="header__top-link">Доставка</a>
-                    </li>
-                    <li class="header__top-item">
-                        <a href="/contacts.html" class="header__top-link">Контакты</a>
-                    </li>
-                </ul>
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "top-menu",
+                    [
+                        "ROOT_MENU_TYPE" => "top",
+                        "MENU_CACHE_TYPE" => "A",
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_USE_GROUPS" => "Y",
+                        "MENU_CACHE_GET_VARS" => array(
+                        ),
+                        "MAX_LEVEL" => "1",
+                        "CHILD_MENU_TYPE" => "left",
+                        "USE_EXT" => "N",
+                        "DELAY" => "N",
+                        "ALLOW_MULTI_SELECT" => "N"
+                    ],
+                    false
+                );?>
                 <div class="header__top-subwrap">
                     <div class="header__top-phones">
                         <span class="header__phones-name">Т</span>
@@ -126,7 +129,13 @@ Loc::loadMessages(__FILE__);
         <div class="container">
             <div class="header__middle-wrap">
                 <div class="header__middle-logo">
-                    <img class="header__logo" src="<?= SITE_TEMPLATE_PATH ?>/template/img/logo.png" alt="">
+                    <?if($APPLICATION->GetCurPage() == '/'):?>
+                        <img class="header__logo" src="<?= SITE_TEMPLATE_PATH ?>/template/img/logo.png" alt="">
+                    <?else:?>
+                        <a href="/">
+                            <img class="header__logo" src="<?= SITE_TEMPLATE_PATH ?>/template/img/logo.png" alt="">
+                        </a>
+                    <?endif;?>
                 </div>
                 <div class="header__middle-right">
                     <div class="header__middle-top">
@@ -443,431 +452,25 @@ Loc::loadMessages(__FILE__);
                         </div>
                     </div>
                     <div class="header__middle-bottom">
-                        <nav class="navigation header__navigation">
-                            <ul class="navigation__list js-mainMenu">
-                                <li class="navigation__item navigation__item_parent navigation__item_svg">
-                                    <a href="#" class="navigation__link" data-show="true">
-                      <span class="navigation__link-name">
-                          Каталог
-                        </span>
-                                        <svg>
-                                            <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                        </svg>
-
-                                    </a>
-                                    <div class="navigation__hidden-list">
-                                        <div class="navigation__grid">
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#tricycle"></use>
-                                                    </svg>
-                                                    <span>Транспорт</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#airplane"></use>
-                                                    </svg>
-                                                    <span>Летний ассортимент</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#tricycle"></use>
-                                                    </svg>
-                                                    <span>Транспорт</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#airplane"></use>
-                                                    </svg>
-                                                    <span>Летний ассортимент</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#tricycle"></use>
-                                                    </svg>
-                                                    <span>Транспорт</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#airplane"></use>
-                                                    </svg>
-                                                    <span>Летний ассортимент</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#tricycle"></use>
-                                                    </svg>
-                                                    <span>Транспорт</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#airplane"></use>
-                                                    </svg>
-                                                    <span>Летний ассортимент</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#tricycle"></use>
-                                                    </svg>
-                                                    <span>Транспорт</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="navigation__hidden-item">
-                                                <span class="navigation__hidden-open js-openCategory"></span>
-                                                <a href="#" class="navigation__hidden-title">
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#airplane"></use>
-                                                    </svg>
-                                                    <span>Летний ассортимент</span>
-                                                </a>
-                                                <ul class="navigation__hidden-sublist">
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Гаражи,
-                                                            парковки, эстакады, станции</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Водный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Воздушный
-                                                            транспорт</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Автотреки</a>
-                                                    </li>
-                                                    <li class="navigation__hidden-subitem"><a href="#"
-                                                                                              class="navigation__hidden-sublink">Коллекционные
-                                                            модели</a>
-                                                    </li>
-                                                </ul>
-                                                <a href="#" class="navigation__hidden-all">
-                                                    <span> Все 9 категорий</span>
-                                                    <svg>
-                                                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="#" class="navigation__link" data-show="false">Новинки</a>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="#" class="navigation__link" data-show="false">Хиты продаж</a>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="#" class="navigation__link" data-show="false">Товары по акции</a>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="#" class="navigation__link" data-show="true">Бренд</a>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="#" class="navigation__link" data-show="true">Фикс-цена</a>
-                                </li>
-                                <li class="navigation__item">
-                                    <a href="#" class="navigation__link" data-show="true">Прайс-лист</a>
-                                </li>
-                                <li class="navigation__item navigation__item_mobile navigation__item_svg">
-                                    <a href="#" class="navigation__link" data-show="false">
-                      <span class="navigation__link-name">
-                         Еще <span>5</span>
-                      </span>
-                                        <svg>
-                                            <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/template/img/icons.svg#arrow-btn"></use>
-                                        </svg>
-                                    </a>
-                                    <ul class="navigation__additional">
-                                        <li class="navigation__additional-item"><a href="#"
-                                                                                   class="navigation__additional-link">Новинки</a>
-                                        </li>
-                                        <li class="navigation__additional-item"><a href="#"
-                                                                                   class="navigation__additional-link">Хиты
-                                                продаж</a>
-                                        </li>
-                                        <li class="navigation__additional-item"><a href="#"
-                                                                                   class="navigation__additional-link">Бренд</a>
-                                        </li>
-                                        <li class="navigation__additional-item"><a href="#"
-                                                                                   class="navigation__additional-link">Фикс-цена</a>
-                                        </li>
-                                        <li class="navigation__additional-item"><a href="#"
-                                                                                   class="navigation__additional-link">Прайс-лист</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:menu",
+                            "catalog",
+                            [
+                                "ROOT_MENU_TYPE" => "catalog",
+                                "MENU_CACHE_TYPE" => "A",
+                                "MENU_CACHE_TIME" => "3600",
+                                "MENU_CACHE_USE_GROUPS" => "Y",
+                                "MENU_CACHE_GET_VARS" => array(
+                                ),
+                                "MAX_LEVEL" => "3",
+                                "CHILD_MENU_TYPE" => "left",
+                                "USE_EXT" => "Y",
+                                "DELAY" => "N",
+                                "ALLOW_MULTI_SELECT" => "N",
+                                "SUBELEMENTS_LIMIT" => 5
+                            ],
+                            false
+                        );?>
                     </div>
                 </div>
             </div>
