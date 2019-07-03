@@ -18,6 +18,13 @@ Asset::getInstance()->addString('<link rel="preload" href="<?= SITE_TEMPLATE_PAT
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/normalize.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/style.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/swiper.css');
+
+Asset::getInstance()->addJs('//code.jquery.com/jquery-3.3.1.min.js');
+Asset::getInstance()->addJs('//api-maps.yandex.ru/2.1/?apikey=3ba22bac-b430-4579-9da6-70a75b6d376f&amp;lang=ru_RU');
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/map.js');
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/jquery.selectric.min.js');
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/main-form.js');
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/nouislider.min.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/swiper.min.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/bundle.js');
 ?>
