@@ -54,9 +54,7 @@ $APPLICATION->SetTitle("Главная");
                                 </a>
                             </div>
                         </div>
-                        <div class="swiper-pagination">
-
-                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                     <div class="index-slider__item index-slider__item_context_outside index-slider__item_color_orange" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider2.png');">
                         <div class="index-slider__item-plaster index-slider__item-plaster_min index-slider__item-plaster_white js-minItem">

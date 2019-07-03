@@ -10,7 +10,8 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "", arra
     "IBLOCK_TYPE" => '1c_catalog',
     "IBLOCK_ID" => 10,
     "DEPTH_LEVEL" => "2",
-    "CACHE_TYPE" => "N",
+    "CACHE_TYPE" => "A",
+    "CACHE_TIME" => 3600
 ), false, Array('HIDE_ICONS' => 'Y'));
 
 $aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);

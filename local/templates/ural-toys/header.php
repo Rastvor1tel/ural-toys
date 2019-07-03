@@ -474,6 +474,7 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/bundle.js');
                                 "USE_EXT" => "Y",
                                 "DELAY" => "N",
                                 "ALLOW_MULTI_SELECT" => "N",
+                                "CATALOG_SECTIONS_LIMIT" => 10,
                                 "SUBELEMENTS_LIMIT" => 5
                             ],
                             false
