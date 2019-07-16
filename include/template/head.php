@@ -23,9 +23,9 @@ Asset::getInstance()->addJs('//api-maps.yandex.ru/2.1/?apikey=3ba22bac-b430-4579
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/map.js');
 Asset::getInstance()->addJs('//code.jquery.com/jquery-3.3.1.min.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/jquery.selectric.min.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/main-form.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/nouislider.min.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/swiper.min.js');
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/nouislider.min.js');
+Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/main-form.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/index.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/utils.js');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/catalog-grid.js');

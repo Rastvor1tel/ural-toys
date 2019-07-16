@@ -1,111 +1,42 @@
 <?
+use \Bitrix\Main\Config\Option;
+
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Главная");
-?>
-<?
-//$APPLICATION->IncludeComponent('bitrix:news', '', []);
-?>
-    <section class="index-slider">
-        <div class="container container_mobile">
-            <div class="index-slider__wrap">
-                <div class="index-slider__body">
-                    <div class="index-slider__big-item js-appendBody swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="index-slider__item index-slider__item_context_inside index-slider__item_color_purple swiper-slide" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider1.png');">
-                                <div class="index-slider__item-plaster index-slider__item-plaster_blue index-slider__item-front">
-                                    Снижение цен
-                                </div>
-                                <h2 class="index-slider__item-title index-slider__item-front">
-                                    На весь ассортимент
-                                </h2>
-                                <p class="index-slider__item-subtitle index-slider__item-front">
-                                    дополнительная скидка 5%
-                                </p>
-                                <a href="#" class="index-slider__item-button index-slider__item-front common-red-button">
-                                    Узнать подробнее
-                                </a>
-                            </div>
-                            <div class="index-slider__item index-slider__item_context_inside index-slider__item_color_purple swiper-slide" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider1.png');">
-                                <div class="index-slider__item-plaster index-slider__item-plaster_blue index-slider__item-front">
-                                    Снижение цен
-                                </div>
-                                <h2 class="index-slider__item-title index-slider__item-front">
-                                    На весь ассортимент
-                                </h2>
-                                <p class="index-slider__item-subtitle index-slider__item-front">
-                                    дополнительная скидка 5%
-                                </p>
-                                <a href="#" class="index-slider__item-button index-slider__item-front common-red-button">
-                                    Узнать подробнее
-                                </a>
-                            </div>
-                            <div class="index-slider__item index-slider__item_context_inside index-slider__item_color_purple swiper-slide" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider1.png');">
-                                <div class="index-slider__item-plaster index-slider__item-plaster_blue index-slider__item-front">
-                                    Снижение цен
-                                </div>
-                                <h2 class="index-slider__item-title index-slider__item-front">
-                                    На весь ассортимент
-                                </h2>
-                                <p class="index-slider__item-subtitle index-slider__item-front">
-                                    дополнительная скидка 5%
-                                </p>
-                                <a href="#" class="index-slider__item-button index-slider__item-front common-red-button">
-                                    Узнать подробнее
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <div class="index-slider__item index-slider__item_context_outside index-slider__item_color_orange" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider2.png');">
-                        <div class="index-slider__item-plaster index-slider__item-plaster_min index-slider__item-plaster_white js-minItem">
-                            Скидка 25%
-                        </div>
-                        <h2 class="index-slider__item-title index-slider__item-title_min">
-                            На настольные игры
-                        </h2>
-                        <p class="index-slider__item-subtitle index-slider__item-subtitle_min">
-                            производства КНР
-                        </p>
-                        <p class="index-slider__item-additional">
-                            Акция продлится до 30.04.19
-                            <br>Скидка предоставляется на условиях предоплаты
-                        </p>
-                    </div>
-                    <div class="index-slider__item index-slider__item_context_outside index-slider__item_image_center index-slider__item_color_blue index-slider__item_bottom" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider3.png');">
-                        <div class="index-slider__item-plaster index-slider__item-plaster_min index-slider__item-plaster_white">
-                            Уникальное предложение
-                        </div>
-                        <h2 class="index-slider__item-title index-slider__item-title_min">
-                            Бесплатная доставка
-                        </h2>
-                        <p class="index-slider__item-subtitle index-slider__item-subtitle_min ">
-                            всем новым клиентам при заказе от 50 000 ₽
-                        </p>
-                        <p class="index-slider__item-additional">
-                            *подробности уточняйте у отдела продаж
-                        </p>
-                    </div>
-                    <div class="index-slider__item index-slider__item_context_outside index-slider__item_image_center index-slider__item_color_dark-purple index-slider__item_bottom" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/slider4.png');">
-                        <div class="index-slider__item-plaster index-slider__item-plaster_min index-slider__item-plaster_white">
-                            Скидка 25%
-                        </div>
-                        <h2 class="index-slider__item-title index-slider__item-title_min">
-                            На настольные игры
-                        </h2>
-                        <p class="index-slider__item-subtitle index-slider__item-subtitle_min ">
-                            производства КНР
-                        </p>
-                        <p class="index-slider__item-additional">
-                            Акция продлится до 30.04.19
-                            <br>Скидка предоставляется на условиях предоплаты
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-<br>
+$APPLICATION->IncludeComponent(
+    "bitrix:catalog.section",
+    "sale-slider",
+    [
+        "IBLOCK_TYPE" => "services",
+        "IBLOCK_ID" => "11",
+        "SECTION_ID" => "1565",
+        "SORT_BY1" => "SORT",
+        "SORT_ORDER1" => "ASC",
+        "SORT_BY2" => "ID",
+        "SORT_ORDER2" => "ASC",
+        "PROPERTY_CODE" => [
+            0 => "SHOW_SLIDER",
+            1 => "SHOW_MORE",
+            2 => "ADDITIONAL_TEXT",
+            3 => "ADDITIONAL_HEADER",
+            4 => "BACKGROUND_COLOR"
+        ],
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "Y",
+        "SET_TITLE" => "N",
+        "SET_BROWSER_TITLE" => "N",
+        "SET_META_KEYWORDS" => "N",
+        "SET_META_DESCRIPTION" => "N",
+        "SET_LAST_MODIFIED" => "N",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "N",
+    ],
+    false
+);
+?>
 <?/*
     <section class="catalog-grid">
         <div class="catalog-grid__title">
@@ -522,6 +453,7 @@ $APPLICATION->SetTitle("Главная");
             </div>
         </div>
     </section>
+
     <section class="main-form with-gradient" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/main-form.png');">
         <div class="container">
             <div class="main-form__wrap">
@@ -2361,116 +2293,33 @@ $APPLICATION->SetTitle("Главная");
                 </div>
             </div>
         </div>
-    </section>
-    <section class="banner-block">
-        <div class="container">
-            <div class="banner-block__wrap">
-                <div class="banner-block__form callback-form with-gradient" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/main-form2.png');">
-                    <h2 class="callback-form__title">Получить консультацию</h2>
-                    <div class="callback-form__body">
-                        <form action="/" method="post">
-                            <div class="callback-form__body-wrap">
-                                <div class="callback-form__row">
-                                    <label class="callback-form__row-label text-label">
-                                        <input type="text" class="callback-form__input text-input" placeholder="Ваше имя">
-                                    </label>
-                                    <label class="callback-form__row-label text-label">
-                                        <input type="text" class="callback-form__input text-input" required placeholder="Ваш телефон*">
-                                    </label>
-                                </div>
-                                <label class="callback-form__label">
-                                    <textarea rows="1" class="text-area callback-form__input text-input" placeholder="Ваш вопрос"></textarea>
-                                </label>
-                                <div class="callback-form__row callback-form__row_mobile-col">
-                                    <label class="callback-form__checkbox checkbox">
-                                        <input type="checkbox" class="checkbox__box visually-hidden">
-                                        <span class="checkbox__span"></span>
-                                        <span class="checkbox__text">Соглашаюсь на обработку данных, установленных в политике конфиденциальности</span>
-                                    </label>
-                                    <button type="button" class="callback-form__submit common-red-button">
-                                        Отправить
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <article class="banner-block__item banner-block__item_orange" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/banner-block.png');">
-                    <a href="#"></a>
-                    <h2 class="banner-block__text-title">
-                        Большая распродажа
-                    </h2>
-                    <p class="banner-block__text-subtitle">
-                        мягких игрушек
-                    </p>
-                    <div class="banner-block__interactive">
-                        -30%
-                    </div>
-                    <p class="banner-block__plaster">
-                        *акция действует при заказе от 100 шт.
-                    </p>
-                </article>
-            </div>
-        </div>
-    </section>
-    <section class="about">
-        <div class="container">
-            <div class="about__wrap">
-                <div class="about__info">
-                    <h2 class="about__title section-title">
-                        О компании
-                    </h2>
-                    <div class="about__info-icon">
-                        <svg>
-                            <use xlink:href="<?=SITE_TEMPLATE_PATH?>/template/img/icons.svg#about-logo"></use>
-                        </svg>
-                    </div>
-                    <div class="about__info-content">
-                        <p><b>Uraltoys</b> - динамично развивающаяся компания, основное направление деятельности которой является продажа детских игрушек оптом. Компания успешно работает с 2007 года, и за это время нам удалось занять одно из лидирующих мест на рынке
-                            игрушек Уральского региона. Наш ассортимент насчитывает более 30 000 наименований качественных игрушек, товаров для детей и новорожденных, а также товаров для спорта и активного отдыха.</p>
-                        <p>Мы сотрудничаем с крупнейшими российскими производителями игрушек, осуществляем прямые поставки китайских игрушек и товаров для детей. Игрушки оптом из Китая закупаются напрямую с заводов-производителей, что гарантирует самые выгодные цены.
-                            Особое внимание уделяется качеству товара и постоянному обновлению и расширению ассортимента игрушек. Все товары сертифицированы, соответствуют установленным требованиям и ГОСТам и абсолютно безопасны для детей.</p>
-                        <p>Имея собственные розничные магазины, мы грамотно и своевременно пополняем свой ассортимент и стараемся отвечать требованиям самых взыскательных покупателей. Выбрать и купить игрушки можно как в нашем КЭШе, так и через наш сайт www.ural-toys.ru.</p>
-                        <p>Продажа игрушек для детей оптом осуществляется как по наличному, так и по безналичному расчету. В нашей компании существует выгодная система скидок.</p>
-                    </div>
-                    <button type="button" class="about__info-more">
-                        Показать еще
-                    </button>
-                </div>
-                <div class="about__features">
-                    <h2 class="about__title section-title">
-                        Почему с нами работать выгодно
-                    </h2>
-                    <div class="about__features-wrap">
-                        <div class="about__features-item">
-                            <h3 class="about__features-title about__features-title_purple">
-                                41
-                            </h3>
-                            <span class="about__features-text">Город доставки</span>
-                        </div>
-                        <div class="about__features-item">
-                            <h3 class="about__features-title about__features-title_orange">
-                                250
-                            </h3>
-                            <span class="about__features-text">Брендов</span>
-                        </div>
-                        <div class="about__features-item">
-                            <h3 class="about__features-title about__features-title_red">
-                                38 <span class="about__features-small">тыс +</span>
-                            </h3>
-                            <span class="about__features-text">Город доставки</span>
-                        </div>
-                        <div class="about__features-item">
-                            <h3 class="about__features-title about__features-title_blue">
-                                97 <span class="about__features-small">%</span>
-                            </h3>
-                            <span class="about__features-text">Брендов</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </section>*/?>
+
+    <?
+$APPLICATION->IncludeComponent(
+    "bitrix:main.include",
+    "",
+    [
+        "AREA_FILE_SHOW" => "file",
+        "PATH" => "/include/template/consult-form.php",
+        "EDIT_TEMPLATE" => ""
+    ],
+    false,
+    ['HIDE_ICONS' => 'Y']
+);
+
+$APPLICATION->IncludeComponent(
+    "bitrix:main.include",
+    "",
+    [
+        "AREA_FILE_SHOW" => "file",
+        "PATH" => "/include/template/about-block.php",
+        "EDIT_TEMPLATE" => ""
+    ],
+    false,
+    ['HIDE_ICONS' => 'Y']
+);
+    ?>
     <section class="contacts">
         <div class="contacts__wrap">
             <div class="container">
