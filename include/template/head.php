@@ -1,9 +1,6 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Page\Asset;
-
-Loc::loadMessages(__FILE__);
 
 Asset::getInstance()->addString('<meta http-equiv="X-UA-Compatible" content="IE=Edge">');
 Asset::getInstance()->addString('<meta name="viewport" content="width=device-width, initial-scale=1">');
@@ -18,6 +15,7 @@ Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/normalize.css')
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/style.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/swiper.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/nouislider.css');
+Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/custom.css');
 
 Asset::getInstance()->addJs('//api-maps.yandex.ru/2.1/?apikey=3ba22bac-b430-4579-9da6-70a75b6d376f&amp;lang=ru_RU');
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/map.js');

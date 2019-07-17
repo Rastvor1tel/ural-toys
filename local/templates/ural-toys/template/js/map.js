@@ -51,7 +51,7 @@ var init = function init(points, divId) {
         balloonContent: createBalloonContent()
       }, {
         iconLayout: 'default#image',
-        iconImageHref: '/template/img/map_mark.png',
+        iconImageHref: '/local/templates/ural-toys/template/img/map_mark.png',
         iconImageSize: [40, 40],
         iconImageOffset: [-40, -40],
         hideIconOnBalloonOpen: false,
@@ -93,11 +93,11 @@ var init = function init(points, divId) {
     // Изменение иконки при ховере и открытии балуна
     var isBalloonOpened = false;
     var setNewIcon = function setNewIcon(e) {
-      e.get('target').options.set('iconImageHref', '/template/img/map_mark.png');
+      e.get('target').options.set('iconImageHref', '/local/templates/ural-toys/template/img/map_mark.png');
     };
 
     var setDefaultIcon = function setDefaultIcon(e) {
-      e.get('target').options.set('iconImageHref', '/template/img/map_mark.png');
+      e.get('target').options.set('iconImageHref', '/local/templates/ural-toys/template/img/map_mark.png');
     };
 
     myCollection.events.add('mouseenter', function (e) {

@@ -1,6 +1,9 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$APPLICATION->IncludeFile('/include/template/head.php');
+use Bitrix\Main\Localization\Loc;
+Loc::loadMessages(__FILE__);
+
+include_once($_SERVER['DOCUMENT_ROOT'].'/include/template/head.php');
 ?>
 <!DOCTYPE html>
 <html lang="<?= LANGUAGE_ID ?>">
@@ -67,7 +70,7 @@ $APPLICATION->IncludeFile('/include/template/head.php');
                 </div>
                 <div class="header__top-manager">
                     <p class="header__manager-name header__normal">
-                        Ваш менеджер:
+                        <?=Loc::getMessage("YOUR_MANAGER")?>:
                     </p>
                     <span class="header__manager-value header__bold">
                  Александра

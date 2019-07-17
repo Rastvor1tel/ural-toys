@@ -4,33 +4,34 @@
         <div class="banner-block__wrap">
             <div class="banner-block__form callback-form with-gradient" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/template/img/main-form2.png');">
                 <h2 class="callback-form__title">Получить консультацию</h2>
-                <div class="callback-form__body">
-                    <form action="/" method="post">
-                        <div class="callback-form__body-wrap">
-                            <div class="callback-form__row">
-                                <label class="callback-form__row-label text-label">
-                                    <input type="text" class="callback-form__input text-input" placeholder="Ваше имя">
-                                </label>
-                                <label class="callback-form__row-label text-label">
-                                    <input type="text" class="callback-form__input text-input" required placeholder="Ваш телефон*">
-                                </label>
-                            </div>
-                            <label class="callback-form__label">
-                                <textarea rows="1" class="text-area callback-form__input text-input" placeholder="Ваш вопрос"></textarea>
-                            </label>
-                            <div class="callback-form__row callback-form__row_mobile-col">
-                                <label class="callback-form__checkbox checkbox">
-                                    <input type="checkbox" class="checkbox__box visually-hidden">
-                                    <span class="checkbox__span"></span>
-                                    <span class="checkbox__text">Соглашаюсь на обработку данных, установленных в политике конфиденциальности</span>
-                                </label>
-                                <button type="button" class="callback-form__submit common-red-button">
-                                    Отправить
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <?
+                $APPLICATION->IncludeComponent(
+                    "bitrix:form.result.new",
+                    "consult",
+                    [
+                        "WEB_FORM_ID" => "1",
+                        "AJAX_MODE" => "Y",
+                        "AJAX_OPTION_JUMP" => "N",
+                        "AJAX_OPTION_SHADOW" => "N",
+                        "AJAX_OPTION_STYLE" => "N",
+                        "CACHE_TIME" => "3600",
+                        "CACHE_TYPE" => "A",
+                        "CHAIN_ITEM_LINK" => "",
+                        "CHAIN_ITEM_TEXT" => "",
+                        "EDIT_URL" => "",
+                        "IGNORE_CUSTOM_TEMPLATE" => "N",
+                        "LIST_URL" => "",
+                        "SEF_MODE" => "N",
+                        "SUCCESS_URL" => "",
+                        "USE_EXTENDED_ERRORS" => "N",
+                        "VARIABLE_ALIASES" => [
+                            "WEB_FORM_ID" => "WEB_FORM_ID",
+                            "RESULT_ID" => "RESULT_ID"
+                        ],
+                    ],
+                    false
+                );
+                ?>
             </div>
             <?
             $APPLICATION->IncludeComponent(
