@@ -1,16 +1,10 @@
-'use strict';
+/* @TODO:
+* Обернуть в класс
+* Инициализировать в index.js
+* Разгрести IIFE помойку
+* */
 
 (function () {
-  const SliderEnum = {
-    sideSlideClass: 'index-slider__item_context_outside',
-    sideSlideMinText: 'index-slider__item-title_min',
-    insideSlideClass: 'index-slider__item_context_inside',
-    swiperClass: 'swiper-slide',
-    insideSlideFront: 'index-slider__item-front',
-    plasterClassName: 'index-slider__item-plaster_blue',
-
-  };
-
   let setFlag = 0;
   let increase = 1;
 
@@ -52,7 +46,6 @@
   const indexSlider = new Swiper('.js-appendBody', {
     slidesPerView: 1,
     watchOverflow: true,
-    effect: 'flip',
     clickable: true,
     grabCursor: true,
     observer: true,
@@ -61,36 +54,8 @@
     },
 
   });
-  const brandsSLider = new Swiper('.single-column-slider__wrap', {
-    slidesPerView: 10,
-    spaceBetween: 74,
-    breakpoints: {
-      1440: {
-        slidesPerView: 8,
-        spaceBetween: 52,
-      },
-      1100: {
-        slidesPerView: 6,
-        spaceBetween: 52,
-      },
-      1000: {
-        slidesPerView: 4,
-        spaceBetween: 52,
-      },
-      635: {
-        slidesPerView:3,
-        spaceBetween: 52,
-      },
-      550: {
-        slidesPerView:3,
-        spaceBetween: 27,
-      }
-    },
-    navigation: {
-      nextEl: '.single-column-slider__controls-item_right',
-      prevEl: '.single-column-slider__controls-item_left'
-    }
-  })
+
+
   document.addEventListener('DOMContentLoaded', () => {
     detachSlider('.index-slider__item_context_outside', '.js-appendBody .swiper-wrapper');
   });

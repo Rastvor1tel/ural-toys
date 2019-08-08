@@ -2,11 +2,12 @@
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Config\Option;
+
 ?>
 <section class="contacts">
     <div class="contacts__wrap">
         <div class="container">
-            <h2 class="section-title contacts__title"><?=Loc::getMessage('CONTACTS_TITLE')?></h2>
+            <h2 class="section-title contacts__title"><?= Loc::getMessage('CONTACTS_TITLE') ?></h2>
         </div>
         <div class="contacts__info">
             <div class="container">
@@ -19,8 +20,8 @@ use Bitrix\Main\Config\Option;
                                 </svg>
                             </div>
                             <div class="contacts__item-info">
-                                <span class="contacts__item-text contacts__item-text_bold"><?=Option::get("grain.customsettings","city")?></span>
-                                <span class="contacts__item-text"><?=Option::get("grain.customsettings","adress")?></span>
+                                <span class="contacts__item-text contacts__item-text_bold"><?= Option::get("grain.customsettings", "city") ?></span>
+                                <span class="contacts__item-text"><?= Option::get("grain.customsettings", "adress") ?></span>
                             </div>
                         </div>
                         <div class="contacts__info-subitem">
@@ -30,7 +31,7 @@ use Bitrix\Main\Config\Option;
                                 </svg>
                             </div>
                             <div class="contacts__item-info">
-                                <span class="contacts__item-text"><?=Option::get("grain.customsettings","phone")?></span>
+                                <span class="contacts__item-text"><?= Option::get("grain.customsettings", "phone") ?></span>
                             </div>
                         </div>
                     </div>
@@ -76,15 +77,16 @@ use Bitrix\Main\Config\Option;
         </div>
     </div>
     <div class="contacts__map">
+        <? CJSCore::Init(['map']); ?>
         <script defer="defer">
             window.onload = function () {
                 var points = [{
-                    coords: [<?=Option::get("grain.customsettings","coordinates")?>],
+                    coords: [<?=Option::get("grain.customsettings", "coordinates")?>],
                     name: 'Название ',
-                    phone: 'Телефон',
+                    phone: '<?=Option::get("grain.customsettings", "phone")?>',
                     email: 'Email',
                     addressStorage: 'Адрес1',
-                    addressOffice: 'Адрес2'
+                    addressOffice: '<?=Option::get("grain.customsettings", "adress")?>'
                 }];
 
                 ymaps.ready(init(points, 'map'));

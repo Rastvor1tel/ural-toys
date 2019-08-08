@@ -1,53 +1,62 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?
 $aMenuLinks = Array(
 	Array(
-		"Каталог",
-		"catalog/",
+		"Каталог", 
+		"catalog/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Новинки",
-		"new/",
+		"Новинки", 
+		"new/", 
+		Array(), 
+		Array(
+		    "class"=>"navigation__link_phone-uniq navigation__link_new",
+            "icon"=>"/template/img/icons.svg#new"
+        ),
+		"" 
+	),
+	Array(
+		"Хиты продаж", 
+		"hitsales/", 
+		Array(), 
+		Array(
+		    "class"=>"navigation__link_phone-uniq navigation__link_hit",
+            "icon"=>"/template/img/icons.svg#fire"
+        ),
+		"" 
+	),
+	Array(
+		"Товары по акции", 
+		"akciy/", 
+		Array(), 
+		Array(
+		    "class"=>"navigation__link_phone-uniq navigation__link_sail",
+            "icon"=>"/template/img/icons.svg#percent"
+        ),
+		"" 
+	),
+	Array(
+		"Бренд", 
+		"brands/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Хиты продаж",
-		"hitsales/",
+		"Фикс-цена", 
+		"fix-price/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Товары по акции",
-		"akciy/",
-		Array(),
-		Array(),
-		""
-	),
-    Array(
-        "Бренд",
-        "brands/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Фикс-цена",
-        "fix-price/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Прайс-лист",
-        "price-list/",
-        Array(),
-        Array(),
-        ""
-    ),
+		"Прайс-лист", 
+		"price-list/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
 );
 ?>

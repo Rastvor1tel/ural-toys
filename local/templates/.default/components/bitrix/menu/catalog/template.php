@@ -55,7 +55,14 @@
                     </li>
                 <?else:?>
                     <li class="navigation__item">
-                        <a href="<?=$arItem['LINK']?>" class="navigation__link" data-show="false"><?=$arItem['TEXT']?></a>
+                        <a href="<?=$arItem['LINK']?>" class="navigation__link<?=$arItem['PARAMS']['class']?' '.$arItem['PARAMS']['class']:'';?>" data-show="false">
+                            <?if($arItem['PARAMS']['icon']):?>
+                                <svg>
+                                    <use xlink:href="<?=SITE_TEMPLATE_PATH.$arItem['PARAMS']['icon']?>"></use>
+                                </svg>
+                            <?endif;?>
+                            <?=$arItem['TEXT']?>
+                        </a>
                     </li>
                 <?endif;?>
             <?/*<li class="navigation__item navigation__item_parent navigation__item_svg">

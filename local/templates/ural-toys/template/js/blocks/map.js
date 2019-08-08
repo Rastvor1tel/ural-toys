@@ -1,10 +1,14 @@
 'use strict';
+/* @TODO:
+* -
+* */
+
 /* eslint-disable */
 
 var init = function init(points, divId) {
   ymaps.ready(function () {
     var myMap;
-    myMap = new ymaps.Map("map", {
+    myMap = new ymaps.Map(divId, {
       center: [55.65, 37.63],
       zoom: 16,
       controls: ['zoomControl']
@@ -93,11 +97,11 @@ var init = function init(points, divId) {
     // Изменение иконки при ховере и открытии балуна
     var isBalloonOpened = false;
     var setNewIcon = function setNewIcon(e) {
-      e.get('target').options.set('iconImageHref', '/local/templates/ural-toys/template/img/map_mark.png');
+      e.get('target').options.set('iconImageHref', '/template/img/map_mark.png');
     };
 
     var setDefaultIcon = function setDefaultIcon(e) {
-      e.get('target').options.set('iconImageHref', '/local/templates/ural-toys/template/img/map_mark.png');
+      e.get('target').options.set('iconImageHref', '/template/img/map_mark.png');
     };
 
     myCollection.events.add('mouseenter', function (e) {

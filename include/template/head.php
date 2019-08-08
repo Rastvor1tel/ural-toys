@@ -17,14 +17,48 @@ Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/swiper.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/nouislider.css');
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/template/css/custom.css');
 
-Asset::getInstance()->addJs('//api-maps.yandex.ru/2.1/?apikey=3ba22bac-b430-4579-9da6-70a75b6d376f&amp;lang=ru_RU');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/map.js');
-Asset::getInstance()->addJs('//code.jquery.com/jquery-3.3.1.min.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/jquery.selectric.min.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/swiper.min.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/nouislider.min.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/main-form.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/index.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/utils.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/catalog-grid.js');
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/items-slider.js');
+//Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/libs/nouislider.min.js');
+//Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/main-form.js');
+//Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/index.js');
+//Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/catalog-grid.js');
+//Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/template/js/items-slider.js');
+
+$arJsConfig = [
+    'yandex_map' => [
+        'js'  => '//api-maps.yandex.ru/2.1/?apikey=3ba22bac-b430-4579-9da6-70a75b6d376f&amp;lang=ru_RU',
+        'skip_core' => true,
+    ],
+    'enums' => [
+        'js' => SITE_TEMPLATE_PATH . '/template/js/enums.js',
+        'skip_core' => true,
+    ],
+    'swiper' => [
+        'js' => SITE_TEMPLATE_PATH . '/template/libs/swiper.min.js',
+        'skip_core' => true,
+    ],
+    'map' => [
+        'js' => SITE_TEMPLATE_PATH . '/template/js/blocks/map.js',
+        'rel' => ['yandex_map'],
+        'skip_core' => true,
+    ],
+    'index_slider' => [
+        'js' => SITE_TEMPLATE_PATH . '/template/js/blocks/index-slider.js',
+        'rel' => ['swiper'],
+        'skip_core' => true,
+    ],
+    'selectric' => [
+        'js' => SITE_TEMPLATE_PATH . '/template/libs/jquery.selectric.min.js',
+        'rel' => ['jquery3'],
+        'skip_core' => true,
+    ],
+    'utils' => [
+        'js' => SITE_TEMPLATE_PATH . '/template/js/utils.js',
+        'rel' => ['jquery3', 'selectric', 'enums'],
+        'skip_core' => true,
+    ]
+];
+foreach ($arJsConfig as $ext => $arExt) {
+    CJSCore::RegisterExt($ext, $arExt);
+}
+
+CJSCore::Init(['utils']);

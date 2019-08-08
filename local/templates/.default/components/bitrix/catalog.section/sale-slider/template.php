@@ -1,4 +1,6 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+CJSCore::Init('index_slider');
+?>
 <section class="index-slider">
     <div class="container container_mobile">
         <div class="index-slider__wrap">
